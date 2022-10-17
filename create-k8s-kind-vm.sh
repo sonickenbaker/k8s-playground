@@ -5,9 +5,10 @@ OS_VERSION="20.04"
 
 if [ "$1" == "delete" ]
   then
+    echo "Deleting $VM_NAME"
     multipass stop "$VM_NAME"
     multipass delete "$VM_NAME"
-    #multipass purge
+    multipass purge
 fi
 
 # Create the VM using multipass
