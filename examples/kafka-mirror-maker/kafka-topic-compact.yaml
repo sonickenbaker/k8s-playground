@@ -1,0 +1,12 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: my-compact-topic
+  labels:
+    strimzi.io/cluster: "my-old-cluster"
+spec:
+  partitions: 7
+  replicas: 1
+  config:
+    cleanup.policy: compact
+    retention.ms: 600000
