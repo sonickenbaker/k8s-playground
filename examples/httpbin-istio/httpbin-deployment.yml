@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin
+  labels:
+    app: httpbin
+    use: test
+spec:
+  selector:
+    matchLabels: # the deployment applies to pods matching following labels
+      app: httpbin
+  replicas: 2
+  template:
+    metadata:
+      # Labels are applied to pods. All or a subset
+      # of the ones in .metadata.labels must be specified
+      labels:
+        app: httpbin
+        use: test
+    spec:
+      containers:
+        - name: httpbin
+          image: kennethreitz/httpbin
+          ports:
+            - containerPort: 80
