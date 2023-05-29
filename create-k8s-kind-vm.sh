@@ -26,7 +26,7 @@ multipass exec "$VM_NAME" "/toolbox/provisioners/install_k8s_tools.sh"
 # Create a cluster
 # images from https://hub.docker.com/r/kindest/node/
 #multipass exec "$VM_NAME" -- /usr/local/bin/kind create cluster --image=kindest/node:v1.21.12 --config /k8s/cluster-configs/3-node-cluster.yml
-multipass exec "$VM_NAME" -- /usr/local/bin/kind create cluster --image=kindest/node:v1.21.12 --config /k8s/cluster-configs/1-node-nginx-ingress.yml
+multipass exec "$VM_NAME" -- /usr/local/bin/kind create cluster --image=kindest/node:v1.21.12 --config /k8s/cluster-configs/1-node-ingress.yml
 
 # Deploy istio
 multipass exec "$VM_NAME" -- /usr/local/bin/istioctl install --set profile=demo -y
