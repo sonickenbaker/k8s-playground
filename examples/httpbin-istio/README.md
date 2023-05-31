@@ -4,6 +4,7 @@
 Simple HttpBin service that is reachable via Istio's ingress gateway
 
 ## Deploy
+`kubectl label namespace default istio-injection=enabled`
 `kubectl apply -f '*.yml'`
 
 ## Test

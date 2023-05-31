@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: echo
+  namespace: stage
+spec:
+  gateways:
+  - echo-gateway
+  hosts:
+  - "*"
+  http:
+  - route:
+    - destination:
+        host: kong-proxy
+        port:
+          number: 80

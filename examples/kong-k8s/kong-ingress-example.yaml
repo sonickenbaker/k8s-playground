@@ -1,0 +1,21 @@
+kind: KongIngress
+metadata:
+  name: cerebro
+proxy: #service
+  protocol: http
+  retries: 0
+  read_timeout: 60000
+  connect_timeout: 60000
+  write_timeout: 60000
+route:
+  #routes:
+  #  - name: cerebro
+  #    preserve_host: false
+  #    paths:
+  #      - /cerebro/
+  #    strip_path: false
+  #    plugins: '{{ [virtual_cerebro_transformation] if virtual_cerebro_hostname else []}}'
+  methods:
+  - GET
+  preserve_host: false
+  strip_path: false

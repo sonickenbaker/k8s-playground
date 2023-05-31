@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: echo-gateway
+  namespace: stage
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - "echo-prod.com"
+    port:
+      name: http
+      number: 80
+      protocol: HTTP

@@ -29,5 +29,5 @@ multipass exec "$VM_NAME" "/toolbox/provisioners/install_k8s_tools.sh"
 multipass exec "$VM_NAME" -- /usr/local/bin/kind create cluster --image=kindest/node:v1.21.12 --config /k8s/cluster-configs/1-node-ingress.yml
 
 # Deploy istio
-multipass exec "$VM_NAME" -- /usr/local/bin/istioctl install --set profile=demo -y
-multipass exec "$VM_NAME" -- /usr/local/bin/kubectl label namespace default istio-injection=enabled
+#multipass exec "$VM_NAME" -- /usr/local/bin/istioctl install --set profile=demo -y
+#multipass exec "$VM_NAME" -- /usr/local/bin/kubectl label namespace default istio-injection=enabled
