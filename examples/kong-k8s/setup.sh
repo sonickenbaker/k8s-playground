@@ -49,6 +49,10 @@ kubectl create -n "$NAMESPACE" secret \
   --from-literal=algorithm=RS256 \
   --from-file=rsa_public_key="/home/ubuntu/jwtRS256.key.pub"
 
+kubectl create -n "$NAMESPACE" secret \
+  generic kong-admin-api-secret \
+  --from-literal=api-key="apikey:thisIsASecret"
+
 kubectl apply -n "$NAMESPACE" -f /k8s/examples/kong-k8s/ingress.yaml
 kubectl apply -f '/k8s/examples/kong-k8s/echo/*-stage.yml'
 

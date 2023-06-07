@@ -35,6 +35,8 @@ spec:
           value: /dev/stdout
         - name: KONG_ADMIN_ERROR_LOG
           value: /dev/stderr
+        - name: KONG_PROXY_ACCESS_LOG
+          value: /dev/stdout
         - name: KONG_PROXY_ERROR_LOG
           value: /dev/stderr
         image: kong:2.2
@@ -101,12 +103,25 @@ spec:
       automountServiceAccountToken: false
       containers:
       - env:
+        - name: CONTROLLER_KONG_ADMIN_HEADER
+          valueFrom:
+            secretKeyRef:
+              name: kong-admin-api-secret
+              key: api-key
+        - name: CONTROLLER_INGRESS_CLASS
+          value: kong
+        - name: CONTROLLER_ANONYMOUS_REPORTS
+          value: "false"
         - name: CONTROLLER_KONG_ADMIN_URL
           value: https://kong-proxy:8444
         - name: CONTROLLER_KONG_ADMIN_TLS_SKIP_VERIFY
           value: "true"
         - name: CONTROLLER_PUBLISH_SERVICE
           value: stage/kong-proxy
+        - name: CONTROLLER_LOG_LEVEL
+          value: "info"
+        - name: CONTROLLER_LOG_FORMAT
+          value: "text"
         - name: CONTROLLER_WATCH_NAMESPACE
           valueFrom:
             fieldRef:
