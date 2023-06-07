@@ -1,0 +1,9 @@
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: add-header-route
+config:
+  add:
+    headers:
+    - "x-added-route: demo"
+plugin: response-transformer

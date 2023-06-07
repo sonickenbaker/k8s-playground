@@ -2,12 +2,35 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: demo
+  annotations:
+    konghq.com/strip-path: 'true'
+    konghq.com/plugins: 'add-header-route'
 spec:
   ingressClassName: kong
   rules:
   - http:
       paths:
       - path: /foo
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: echo
+            port:
+              number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: authenticated
+  annotations:
+    konghq.com/strip-path: 'true'
+    konghq.com/plugins: 'app-jwt'
+spec:
+  ingressClassName: kong
+  rules:
+  - http:
+      paths:
+      - path: /authenticated-foo
         pathType: ImplementationSpecific
         backend:
           service:
