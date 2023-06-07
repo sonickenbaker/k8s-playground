@@ -1,3 +1,4 @@
+# From https://raw.githubusercontent.com/Kong/kubernetes-ingress-controller/v2.8.2/deploy/single/all-in-one-dbless.yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
