@@ -17,6 +17,7 @@ istioctl install --set profile=demo -y
 # STAGE
 NAMESPACE="stage"
 kubectl create namespace "$NAMESPACE"
+kubectl label namespace "$NAMESPACE" istio-injection=enabled --overwrite
 #helm install kong-proxy kong/kong --version "$HELM_CHART_VERSION" --set "ingressController.watchNamespaces={stage}" -f "$HELM_VALUES" -n "$NAMESPACE"
 kubectl apply -n "$NAMESPACE" -f '/k8s/examples/kong-k8s/kong/*.yaml'
 kubectl apply -n "$NAMESPACE" -f '/k8s/examples/kong-k8s/kong/consumers/*.yaml'
