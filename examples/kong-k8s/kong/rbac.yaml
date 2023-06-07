@@ -267,20 +267,19 @@ subjects:
   name: kong-serviceaccount
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
   name: kong-ingress
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
+  kind: Role
   name: kong-ingress
 subjects:
 - kind: ServiceAccount
   name: kong-serviceaccount
-  namespace: stage
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
   name: kong-ingress-cluster
 roleRef:
@@ -290,6 +289,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: kong-serviceaccount
+  namespace: stage
 ---
 apiVersion: v1
 kind: Secret
