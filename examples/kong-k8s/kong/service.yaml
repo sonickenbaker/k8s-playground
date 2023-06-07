@@ -13,5 +13,9 @@ spec:
     port: 80
     targetPort: 8000
     protocol: TCP
+  - name: kong-proxy-admin-api
+    port: 8444
+    targetPort: 8444
+    protocol: TCP
   selector:
     app: ingress-kong
