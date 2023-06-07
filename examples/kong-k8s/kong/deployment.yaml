@@ -87,6 +87,11 @@ spec:
           value: "true"
         - name: CONTROLLER_PUBLISH_SERVICE
           value: stage/kong-proxy
+        - name: CONTROLLER_WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
         - name: POD_NAME
           valueFrom:
             fieldRef:
